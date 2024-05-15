@@ -23,3 +23,5 @@ if (!$cacheItem->isHit()) {
 
     $apiKey = $cacheItem->get();
 }
+
+dd($apiKey);
