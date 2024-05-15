@@ -6,22 +6,25 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 $cache = new FilesystemAdapter();
 
-$cacheItem = $cache->getItem('an.item.key');
+$cacheItem = $cache->getItem('user.account');
 
 if (!$cacheItem->isHit()) {
 
     echo 'Miss :( <br>';
 
-    $apiKey = md5('foo');
+    $account = [
+        'name' => 'Andrew Farquharson',
+        'id' => 4321
+    ];
 
-    $cacheItem->set($apiKey);
+    $cacheItem->set($account);
 
     $cache->save($cacheItem);
 } else {
 
     echo 'Hit! <br>';
 
-    $apiKey = $cacheItem->get();
+    $account = $cacheItem->get();
 }
 
-dd($apiKey);
+dd($account);
